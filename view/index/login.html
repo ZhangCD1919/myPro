@@ -6,29 +6,52 @@
     <?php include('/view/common/style.html') ?>
 </head>
 <body>
-    <!-- 登录 -->
-    <div class="login">
-        <div class="login-wrap">
-            <div class="avatar">
-                <img src="./uploads/monkey.png" class="img-circle" alt="">
-            </div>
-            <form id="loginForm" class="col-xs-offset-1 col-xs-10">
-                <div class="input-group input-group-lg">
+<!-- 登录 -->
+<div class="login">
+    <div class="login-wrap">
+        <div class="avatar">
+            <img src="./uploads/monkey.png" class="img-circle" alt="">
+        </div>
+        <form id="loginForm" class="col-xs-offset-1 col-xs-10">
+            <div class="input-group input-group-lg">
                     <span class="input-group-addon">
                         <i class="fa fa-user"></i>
                     </span>
-                    <input name="tc_name" type="text" class="form-control" placeholder="用户名">
-                </div>
-                <div class="input-group input-group-lg">
+                <input name="tc_name" type="text" class="form-control" placeholder="用户名">
+            </div>
+            <div class="input-group input-group-lg">
                     <span class="input-group-addon">
                         <i class="fa fa-key"></i>
                     </span>
-                    <input name="tc_pass" type="password" class="form-control" placeholder="密码">
-                </div>
-                <button type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
-            </form>
-        </div>
+                <input name="tc_pass" type="password" class="form-control" placeholder="密码">
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
+        </form>
     </div>
-    <?php include('/view/common/script.html') ?>
+</div>
+<?php include('/view/common/script.html') ?>
+
+<script src="/public/assets/jquery/jquery.min.js"></script>
+<script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+        $("#loginForm").submit(function () {
+            var formData=$(this).serialize();
+            $.ajax({
+                type:"post",
+                url:"/api/login",
+                data:formData,
+                dataType:'json',
+                success:function (data) {
+                    if(data.code==200){
+                        location.href='/index/index';
+                    }
+                },
+                error:function (data) {
+
+                }
+            });
+            return false;
+        });
+</script>
 </body>
 </html>
