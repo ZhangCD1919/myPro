@@ -32,26 +32,8 @@
 <?php include('/view/common/script.html') ?>
 
 <script src="/public/assets/jquery/jquery.min.js"></script>
+<script src="/public/assets/jquery-cookie/jquery.cookie.js"></script>
 <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
-<script>
-        $("#loginForm").submit(function () {
-            var formData=$(this).serialize();
-            $.ajax({
-                type:"post",
-                url:"/api/login",
-                data:formData,
-                dataType:'json',
-                success:function (data) {
-                    if(data.code==200){
-                        location.href='/index/index';
-                    }
-                },
-                error:function (data) {
 
-                }
-            });
-            return false;
-        });
-</script>
 </body>
 </html>
