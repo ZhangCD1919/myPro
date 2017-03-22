@@ -32,5 +32,19 @@ define(['jquery','echarts','cookie'],function ($,echarts) {
     var obj=JSON.parse($.cookie('logInfo'));
     $('.aside .profile img').attr('src',obj.tc_avatar);
     $('.aside .profile h4').html(obj.tc_name);
+
+    // 退出功能
+    $("#logoutId").click(function () {
+        $.ajax({
+            type:"post",
+            url:"/api/logout",
+            dataType:"json",
+            success:function (data) {
+                if (data.code==200){
+                    location.href="/login";
+                }
+            }
+        })
+    })
 });
 
