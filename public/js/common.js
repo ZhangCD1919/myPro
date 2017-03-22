@@ -3,6 +3,9 @@ define(['jquery', 'echarts', 'template', 'cookie'], function ($, echarts, templa
     $('.navs ul').prev('a').on('click', function () {
         $(this).next().slideToggle();
     });
+    //菜单栏的激活状态
+    var pathname=location.pathname;
+    $('.navs a[href="'+pathname+'"]').addClass("active");
 
 // 登录功能
     $("#loginForm").submit(function () {
@@ -24,7 +27,6 @@ define(['jquery', 'echarts', 'template', 'cookie'], function ($, echarts, templa
     });
 
     // cookie设置未登录跳转到登录页面
-    var pathname = location.pathname;
     var flag = $.cookie('PHPSESSID');
     if (pathname.indexOf('login') == -1) {
         if (!flag) {

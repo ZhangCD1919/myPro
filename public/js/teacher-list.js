@@ -32,8 +32,6 @@ define(['jquery', 'template', 'bootstrap'], function ($, template) {
                 var tcid = td.attr("data-tcid");
                 var tcstatus = td.attr("data-status");
                 var that = $(this);
-
-
                 $.ajax({
                     type: "post",
                     url: "/api/teacher/handle",
