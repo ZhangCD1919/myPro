@@ -1,4 +1,4 @@
-define(['jquery', 'echarts', 'template', 'cookie'], function ($, echarts, template) {
+define(['jquery', 'echarts', 'template','nprogress', 'cookie'], function ($, echarts, template,nprogress) {
     // 控制左侧导航菜单的显示和隐藏
     $('.navs ul').prev('a').on('click', function () {
         $(this).next().slideToggle();
@@ -6,6 +6,16 @@ define(['jquery', 'echarts', 'template', 'cookie'], function ($, echarts, templa
     //菜单栏的激活状态
     var pathname=location.pathname;
     $('.navs a[href="'+pathname+'"]').addClass("active");
+
+    // 页面加载蒙版
+    $(document).ajaxStart(function () {
+        $(".overlayer").show();
+    });
+    $(document).ajaxStop(function () {
+        $(".overlayer").hide();
+    });
+    nprogress.start();
+    nprogress.done();
 
 // 登录功能
     $("#loginForm").submit(function () {
