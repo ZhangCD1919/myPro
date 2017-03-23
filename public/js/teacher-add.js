@@ -21,10 +21,10 @@ define(['jquery', 'template', 'datepicker', 'language', 'validate', 'form'], fun
                 onkeyup: true,
                 sendForm: false,
                 eachValidField: function () {
-                    $(this).removeClass("error").addClass("success");
+                    $(this).closest('.form-group').removeClass("has-error").addClass("has-success");
                 },
                 eachInvalidField: function () {
-                    $(this).removeClass("success").addClass("error");
+                    $(this).closest('.form-group').removeClass("has-success").addClass("has-error");
                 },
                 valid: function () {
                     $(this).ajaxSubmit({
