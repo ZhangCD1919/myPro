@@ -12,15 +12,19 @@ require.config({
         bootstrap:'assets/bootstrap/js/bootstrap',
         nprogress:'assets/nprogress/nprogress',
         datepicker:'assets/bootstrap-datepicker/js/bootstrap-datepicker.min',
-        language:'assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min'
+        language:'assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+        validate:'assets/validate/jquery-validate.min',
+        form:'assets/jquery-form/jquery.form'
     },
     shim:{
         bootstrap:{
             deps:['jquery']
-
         },
         language:{
             deps:['jquery','datepicker']
+        },
+        validate:{
+            deps:['jquery']
         }
     }
 });
